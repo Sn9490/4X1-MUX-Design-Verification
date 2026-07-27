@@ -1,140 +1,152 @@
 ![Verilog](https://img.shields.io/badge/Verilog-RTL-blue)
-![SystemVerilog](https://img.shields.io/badge/SystemVerilog-Verification-green)
-![MUX](https://img.shields.io/badge/MUX-CombinationalLogic-orange)
-![Digital\_Design](https://img.shields.io/badge/Digital-Design-red)
+![SystemVerilog](https://img.shields.io/badge/SystemVerilog-HVL-green)
+![UVM](https://img.shields.io/badge/UVM-Verification-orange)
+![MUX](https://img.shields.io/badge/4x1-MUX-red)
 ![QuestaSim](https://img.shields.io/badge/QuestaSim-Simulator-blue)
 
-# MUX_4x1_Design_Verification
+# 4x1 MUX RTL Design & UVM Verification
 
-## Overview
+## Project Overview
 
-Designed and verified a 4x1 Multiplexer using Verilog HDL. Developed a SystemVerilog class-based verification environment to validate functional correctness, input selection logic, and output behavior for all possible select line combinations.
-
----
-
-## Multiplexer Theory
-
-A Multiplexer (MUX) is a combinational circuit that selects one of several input signals and forwards the selected input to a single output line.
-
-The selection lines determine which input is connected to the output.
+This project implements a **4x1 Multiplexer (MUX)** using **Verilog HDL** and verifies its functionality using **SystemVerilog** and the **Universal Verification Methodology (UVM)**. A reusable UVM verification environment was developed to validate all possible input selection scenarios and ensure correct combinational logic functionality.
 
 ---
 
-## Design Features
+# HDL / HVL
 
-### Inputs
+- **HDL:** Verilog
+- **HVL:** SystemVerilog
+- **Verification Methodology:** UVM
+- **EDA Tool:** QuestaSim
 
-* I0
-* I1
-* I2
-* I3
-* S1
-* S0
+---
 
-### Output
+# Description
 
-* Y
+A **4x1 Multiplexer** is a combinational circuit that selects one of four input signals and routes it to a single output based on two select lines.
 
-### Selection Logic
+The RTL was implemented in Verilog HDL, and functional verification was carried out using a reusable UVM testbench to validate all input selection combinations and output correctness.
+
+---
+
+# Responsibilities
+
+- Architected the block-level structure for the 4x1 Multiplexer.
+
+- Implemented the RTL design using Verilog HDL.
+
+- Developed a reusable UVM verification environment.
+
+- Implemented UVM components including:
+  - Sequence Item
+  - Sequence
+  - Sequencer
+  - Driver
+  - Monitor
+  - Agent
+  - Scoreboard
+  - Environment
+  - Test
+
+- Developed directed and constrained-random testcases.
+
+- Verified all input selection combinations.
+
+- Generated functional and code coverage for verification sign-off.
+
+- Performed simulation and waveform debugging using QuestaSim.
+
+---
+
+# Multiplexer Operation
 
 | S1 | S0 | Output |
-| -- | -- | ------ |
-| 0  | 0  | I0     |
-| 0  | 1  | I1     |
-| 1  | 0  | I2     |
-| 1  | 1  | I3     |
+|:--:|:--:|:------:|
+| 0 | 0 | I0 |
+| 0 | 1 | I1 |
+| 1 | 0 | I2 |
+| 1 | 1 | I3 |
 
 ---
 
-## RTL Design
-
-Implemented the 4x1 Multiplexer using Verilog HDL.
-
-### Functionality
-
-* Input Selection
-* Combinational Data Routing
-* Output Generation Based on Select Lines
-
----
-
-## Verification Environment
-
-A reusable SystemVerilog verification environment was developed to validate MUX functionality.
-
-### Components
-
-* Generator
-* Driver
-* Monitor
-* Scoreboard
-* Environment
-* Testcases
-
-### Interface
-
-SystemVerilog interface used for DUT communication.
-
-### Transaction Objects
-
-Transaction-level objects used for stimulus generation.
-
-### Packages
-
-Reusable packages containing common definitions and transaction classes.
-
----
-
-## Features Verified
+# Features Verified
 
 ### Functional Verification
 
-* Input I0 Selection
-* Input I1 Selection
-* Input I2 Selection
-* Input I3 Selection
+- Input I0 Selection
+
+- Input I1 Selection
+
+- Input I2 Selection
+
+- Input I3 Selection
+
+- Consecutive Selection Changes
+
+- Random Input Combinations
 
 ### Data Validation
 
-* Output Correctness Verification
-* Select Line Validation
-* Expected vs Actual Data Comparison
+- Output Correctness
+
+- Select Line Validation
+
+- Expected vs Actual Data Comparison
 
 ---
 
-## Test Scenarios
+# Verification Methodology
 
-* All Select Line Combinations
-* Random Input Values
-* Random Select Values
-* Consecutive Selection Changes
+- UVM
 
----
+- Constrained Random Verification
 
-## Results
+- Functional Verification
 
-* Successfully implemented a 4x1 Multiplexer using Verilog HDL.
-* Developed a reusable verification environment using SystemVerilog.
-* Verified all possible select line combinations.
-* Validated output correctness using scoreboard-based checking.
-* Debugged and analyzed simulation results using waveform analysis.
+- Scoreboarding
 
----
+- Regression Testing
 
-## Tools Used
+- Functional Coverage
 
-* Verilog
-* SystemVerilog
-* QuestaSim
-* Git
-* Linux
+- Code Coverage
 
 ---
 
-## Project Structure
+# Results
+
+- Successfully implemented the 4x1 Multiplexer RTL using Verilog.
+
+- Developed a reusable UVM verification environment.
+
+- Verified all select-line combinations.
+
+- Achieved functional and code coverage for verification sign-off.
+
+- Validated output correctness through simulation and waveform analysis.
+
+---
+
+# Tools Used
+
+- Verilog HDL
+
+- SystemVerilog
+
+- UVM
+
+- QuestaSim
+
+- Git
+
+- Linux
+
+---
+
+# Repository Structure
 
 ```text
-MUX_4x1_Design_Verification
+MUX_4x1_Design_Verification/
 │
 ├── Comps/
 ├── DUT/
@@ -145,41 +157,58 @@ MUX_4x1_Design_Verification
 └── Top/
 ```
 
-### Directory Description
+---
 
-#### DUT
+# Directory Description
 
-Contains RTL implementation of the 4x1 Multiplexer.
+### DUT
 
-#### Interface
+Contains the Verilog RTL implementation of the 4x1 Multiplexer.
 
-SystemVerilog interfaces connecting DUT and verification components.
+### Interface
 
-#### Objects
+SystemVerilog interface connecting the DUT with the UVM environment.
 
-Transaction classes used for stimulus generation.
+### Objects
 
-#### Comps
+Sequence items (transaction objects) used for stimulus generation.
 
-Verification components such as Driver, Monitor, Scoreboard, and Environment.
+### Comps
 
-#### Packages
+UVM components including Driver, Monitor, Sequencer, Agent, Scoreboard, Environment, and Test.
 
-Common packages and shared definitions.
+### Packages
 
-#### Top
+Shared packages containing transaction classes, parameters, and common definitions.
 
-Top-level testbench integration files.
+### Top
 
-#### Sim
+Top-level UVM testbench and DUT integration.
 
-Simulation scripts and execution files.
+### Sim
+
+Compilation scripts, simulation commands, and execution files.
 
 ---
 
-## Future Enhancements
+# Future Enhancements
 
-* Functional Coverage Collection
-* Assertion-Based Verification (SVA)
-* Parameterized N:1 Multiplexer Design
-* UVM-Based Verification Environment
+- Assertion-Based Verification (SVA)
+
+- Parameterized N:1 Multiplexer Design
+
+- Functional Coverage Crosses
+
+- Constrained-Random Test Enhancements
+
+---
+
+# Author
+
+**Guru Naveen Reddy Siddu**
+
+📧 Email: gurunaveenreddys@gmail.com
+
+🔗 LinkedIn: https://www.linkedin.com/in/siddu-guru-naveen-reddy-93b597282
+
+💻 GitHub: https://github.com/Sn9490
