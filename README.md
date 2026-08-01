@@ -1,214 +1,98 @@
-![Verilog](https://img.shields.io/badge/Verilog-RTL-blue)
-![SystemVerilog](https://img.shields.io/badge/SystemVerilog-HVL-green)
-![UVM](https://img.shields.io/badge/UVM-Verification-orange)
-![MUX](https://img.shields.io/badge/4x1-MUX-red)
-![QuestaSim](https://img.shields.io/badge/QuestaSim-Simulator-blue)
+<div align="center">
 
-# 4x1 MUX RTL Design & UVM Verification
+# 🔀 4x1 MUX — Design & Verification
 
-## Project Overview
+### Combinational Logic RTL | Class-Based UVM Verification
 
-This project implements a **4x1 Multiplexer (MUX)** using **Verilog HDL** and verifies its functionality using **SystemVerilog** and the **Universal Verification Methodology (UVM)**. A reusable UVM verification environment was developed to validate all possible input selection scenarios and ensure correct combinational logic functionality.
+![Verilog](https://img.shields.io/badge/HDL-Verilog-0088CE?style=for-the-badge)
+![SystemVerilog](https://img.shields.io/badge/HVL-SystemVerilog-1E88E5?style=for-the-badge)
+![UVM](https://img.shields.io/badge/Methodology-UVM-FF6F00?style=for-the-badge)
+![QuestaSim](https://img.shields.io/badge/Tool-QuestaSim-005A9C?style=for-the-badge)
+
+</div>
 
 ---
 
-# HDL / HVL
+## 📖 Overview
+
+This project implements and verifies a **4-to-1 Multiplexer (MUX)** — a combinational circuit that selects one of four input lines and routes it to a single output line based on 2-bit select lines.
+
+## 🔧 Design
+
+| Select Lines (`s1 s0`) | Output |
+|---|---|
+| `00` | `in0` |
+| `01` | `in1` |
+| `10` | `in2` |
+| `11` | `in3` |
+
+- Implemented as a purely combinational block in **Verilog HDL**
+- Block-level structure defined before RTL implementation
+
+## 🏗️ Verification Environment
+
+- Architected a **class-based UVM verification environment**
+- Verified the RTL module using **SystemVerilog**
+
+```
+uvm_test
+ └── uvm_env
+      ├── agent
+      │    ├── sequencer
+      │    ├── driver
+      │    └── monitor
+      ├── scoreboard
+      └── coverage collector
+```
+
+## 🔧 Responsibilities
+
+- Architected the block-level structure for the design
+- Implemented RTL using Verilog HDL
+- Verified the RTL module using SystemVerilog
+- Architected the class-based UVM verification environment
+- Generated functional and code coverage for RTL verification sign-off
+
+## ✅ Results
+
+| Metric | Result |
+|---|---|
+| Functional Coverage | ✅ Achieved |
+| Code Coverage | ✅ Achieved |
+| Verification Sign-off | ✅ Achieved |
+| Simulation Tool | QuestaSim |
+
+## 🛠️ Tools & Technologies
 
 - **HDL:** Verilog
 - **HVL:** SystemVerilog
-- **Verification Methodology:** UVM
-- **EDA Tool:** QuestaSim
+- **Methodology:** UVM (Universal Verification Methodology)
+- **Simulator:** QuestaSim
+- **Version Control:** Git
 
----
+## 📂 Repository Structure
 
-# Description
-
-A **4x1 Multiplexer** is a combinational circuit that selects one of four input signals and routes it to a single output based on two select lines.
-
-The RTL was implemented in Verilog HDL, and functional verification was carried out using a reusable UVM testbench to validate all input selection combinations and output correctness.
-
----
-
-# Responsibilities
-
-- Architected the block-level structure for the 4x1 Multiplexer.
-
-- Implemented the RTL design using Verilog HDL.
-
-- Developed a reusable UVM verification environment.
-
-- Implemented UVM components including:
-  - Sequence Item
-  - Sequence
-  - Sequencer
-  - Driver
-  - Monitor
-  - Agent
-  - Scoreboard
-  - Environment
-  - Test
-
-- Developed directed and constrained-random testcases.
-
-- Verified all input selection combinations.
-
-- Generated functional and code coverage for verification sign-off.
-
-- Performed simulation and waveform debugging using QuestaSim.
-
----
-
-# Multiplexer Operation
-
-| S1 | S0 | Output |
-|:--:|:--:|:------:|
-| 0 | 0 | I0 |
-| 0 | 1 | I1 |
-| 1 | 0 | I2 |
-| 1 | 1 | I3 |
-
----
-
-# Features Verified
-
-### Functional Verification
-
-- Input I0 Selection
-
-- Input I1 Selection
-
-- Input I2 Selection
-
-- Input I3 Selection
-
-- Consecutive Selection Changes
-
-- Random Input Combinations
-
-### Data Validation
-
-- Output Correctness
-
-- Select Line Validation
-
-- Expected vs Actual Data Comparison
-
----
-
-# Verification Methodology
-
-- UVM
-
-- Constrained Random Verification
-
-- Functional Verification
-
-- Scoreboarding
-
-- Regression Testing
-
-- Functional Coverage
-
-- Code Coverage
-
----
-
-# Results
-
-- Successfully implemented the 4x1 Multiplexer RTL using Verilog.
-
-- Developed a reusable UVM verification environment.
-
-- Verified all select-line combinations.
-
-- Achieved functional and code coverage for verification sign-off.
-
-- Validated output correctness through simulation and waveform analysis.
-
----
-
-# Tools Used
-
-- Verilog HDL
-
-- SystemVerilog
-
-- UVM
-
-- QuestaSim
-
-- Git
-
-- Linux
-
----
-
-# Repository Structure
-
-```text
-MUX_4x1_Design_Verification/
-│
-├── Comps/
-├── DUT/
-├── Interface/
-├── Objects/
-├── Packages/
-├── Sim/
-└── Top/
 ```
+├── rtl/
+│   └── mux4x1.v
+├── tb/               # UVM testbench (agent, sequences, scoreboard, env, tests)
+├── sim/              # Simulation scripts
+├── docs/             # Coverage reports
+└── README.md
+```
+<!-- Update this structure to match your actual repo layout -->
 
----
+## 🚀 How to Run
 
-# Directory Description
+```bash
+# Example QuestaSim flow — update commands to match your scripts
+vlib work
+vlog -f filelist.f
+vsim -c work.tb_top -do "run -all"
+```
+<!-- Replace with your actual simulation commands / Makefile targets -->
 
-### DUT
+## 👤 Author
 
-Contains the Verilog RTL implementation of the 4x1 Multiplexer.
-
-### Interface
-
-SystemVerilog interface connecting the DUT with the UVM environment.
-
-### Objects
-
-Sequence items (transaction objects) used for stimulus generation.
-
-### Comps
-
-UVM components including Driver, Monitor, Sequencer, Agent, Scoreboard, Environment, and Test.
-
-### Packages
-
-Shared packages containing transaction classes, parameters, and common definitions.
-
-### Top
-
-Top-level UVM testbench and DUT integration.
-
-### Sim
-
-Compilation scripts, simulation commands, and execution files.
-
----
-
-# Future Enhancements
-
-- Assertion-Based Verification (SVA)
-
-- Parameterized N:1 Multiplexer Design
-
-- Functional Coverage Crosses
-
-- Constrained-Random Test Enhancements
-
----
-
-# Author
-
-**Guru Naveen Reddy Siddu**
-
-📧 Email: gurunaveenreddys@gmail.com
-
-🔗 LinkedIn: https://www.linkedin.com/in/siddu-guru-naveen-reddy-93b597282
-
-💻 GitHub: https://github.com/Sn9490
+**Guru Naveen Reddy** — ASIC Design Verification Engineer
+[LinkedIn](https://www.linkedin.com/in/siddu-guru-naveen-reddy-93b597282) · [GitHub](https://github.com/Sn9490) · gurunaveenreddys@gmail.com
